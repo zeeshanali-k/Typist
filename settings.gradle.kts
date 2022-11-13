@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Typist"
-include ':app'
-include ':typist'
+include(":app")
+include(":typist")
