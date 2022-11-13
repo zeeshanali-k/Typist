@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import tech.devscion.typist.Typist
+import tech.devscion.typist.TypistSpeed
 import tech.devscion.typistdemo.ui.theme.TypistTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,9 +31,10 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Typist(
                         text = "Hello", modifier = Modifier.fillMaxWidth(),
+                        typistSpeed = TypistSpeed.NORMAL,
                         textStyle = TextStyle(
                             color = Color.Red, fontWeight = FontWeight.Bold,
-                            fontSize = 28.sp
+                            fontSize = 28.sp,
                         )
                     )
                 }
