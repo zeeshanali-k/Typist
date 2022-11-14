@@ -34,11 +34,13 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         Typist(
-                            text = "Hi! I am Typist.", modifier = Modifier
+                            text = "Hi! I am Typist.",
+                            modifier = Modifier
                                 .align(Alignment.Center),
                             typistSpeed = TypistSpeed.NORMAL,
                             textStyle = TextStyle(
-                                color = Color.Red, fontWeight = FontWeight.Bold,
+                                color = Color.Red,
+                                fontWeight = FontWeight.Bold,
                                 fontSize = 28.sp,
                                 textAlign = TextAlign.Center
                             )
