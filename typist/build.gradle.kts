@@ -1,7 +1,13 @@
+import java.net.URI
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.vanniktech.maven.publish")
 }
+
+val composeVersion = "1.4.0-alpha02"
+val composeCompilerVersion = "1.3.0"
 
 android {
     namespace = "tech.devscion.typist"
@@ -36,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.1"
+        kotlinCompilerExtensionVersion =composeCompilerVersion
     }
 }
 
@@ -44,6 +50,22 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.compose.ui:ui:1.3.1")
-    implementation("androidx.compose.material:material:1.3.1")
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
+}
+
+
+publishing {
+    repositories {
+        maven {
+            val releasesRepoUrl = "$buildDir/repos/releases"
+            val snapshotsRepoUrl = "$buildDir/repos/snapshots"
+            url = if (version.toString().endsWith("SNAPSHOT")) URI.create(snapshotsRepoUrl) else URI.create(releasesRepoUrl)
+        }
+    }
+}
+
+
+task("printVersionName") {
+    println(System.getProperty("VERSION_NAME"))
 }
