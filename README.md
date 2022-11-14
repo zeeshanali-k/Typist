@@ -15,8 +15,12 @@ repositories {
 ```
 <p>Add this to your module level build.gradle file:</p>
 
-```groovy
+```groovy/kotlin
 implementation 'tech.dev-scion:typist:TAG'
+
+or for kotlin
+
+implementation("tech.dev-scion:typist:TAG")
 ```
 <p>Replace TAG with library version</p>
 
