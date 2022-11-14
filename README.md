@@ -3,7 +3,7 @@
 # Typist
 A Jetpack Compose Text Typing Animation Library
 
-
+<img src="meida/typist.gif"></img>
 
 ## Usage
 <p>Add this to your project level "build.gradle" or in newer versions of gradle in "settings.gradle" under repositories section:</p>
