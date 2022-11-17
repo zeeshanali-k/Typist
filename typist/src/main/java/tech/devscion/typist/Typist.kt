@@ -1,5 +1,6 @@
 package tech.devscion.typist
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,11 +15,12 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun Typist(
+    text: String,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle(),
     cursorColor: Color = Color.Black,
     typistSpeed: TypistSpeed = TypistSpeed.NORMAL,
-    text: String
+    onAnimationEnd: (() -> Unit)? = null
 ) {
     val currentText = remember {
         mutableStateOf("")
@@ -33,9 +35,12 @@ fun Typist(
             remainingText.value = remainingText.value.removePrefix("${remainingText.value.first()}")
             delay(typistSpeed.value)
         }
+        if (remainingText.value.isEmpty()) {
+            onAnimationEnd?.invoke()
+        }
     }
 
-    Row(modifier = modifier, horizontalArrangement = Arrangement.Start) {
+    Row(modifier = modifier.animateContentSize(), horizontalArrangement = Arrangement.Start) {
         Text(
             text = currentText.value,
             style = textStyle,

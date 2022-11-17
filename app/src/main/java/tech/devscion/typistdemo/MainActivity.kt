@@ -1,8 +1,10 @@
 package tech.devscion.typistdemo
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,7 +38,8 @@ class MainActivity : ComponentActivity() {
                         Typist(
                             text = "Hi! I am Typist.",
                             modifier = Modifier
-                                .align(Alignment.Center),
+                                .align(Alignment.Center)
+                                .animateContentSize(),
                             typistSpeed = TypistSpeed.NORMAL,
                             textStyle = TextStyle(
                                 color = Color.Red,
@@ -44,7 +47,13 @@ class MainActivity : ComponentActivity() {
                                 fontSize = 28.sp,
                                 textAlign = TextAlign.Center
                             )
-                        )
+                        ) {
+                            Toast.makeText(
+                                applicationContext, "Typed!",
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                        }
                     }
                 }
             }
