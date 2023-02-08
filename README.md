@@ -36,7 +36,10 @@ Typist(
         color = Color.Red,
         fontWeight = FontWeight.Bold,
         fontSize = 28.sp,
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
+        isBlinkingCursor = true, // if true the cursor will keep blinking
+        isInfiniteCursor = false, // if true the cursor will not hide even after the text has been written
+        isCursorVisible = true, // if true the cursor will not be visible at all
     )
 ){
 //Called On Typing Animation End
