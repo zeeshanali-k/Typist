@@ -1,12 +1,11 @@
 package tech.devscion.typist
 
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -20,6 +19,10 @@ fun Typist(
     textStyle: TextStyle = TextStyle(),
     cursorColor: Color = Color.Black,
     typistSpeed: TypistSpeed = TypistSpeed.NORMAL,
+    isInfiniteCursor: Boolean = true,
+    isBlinkingCursor: Boolean = true,
+    isCursorVisible: Boolean = true,
+    cursorSymbol: String = "|",
     onAnimationEnd: (() -> Unit)? = null
 ) {
     val currentText = remember {
@@ -40,14 +43,32 @@ fun Typist(
         }
     }
 
-    Row(modifier = modifier.animateContentSize(), horizontalArrangement = Arrangement.Start) {
+    Row(
+        modifier = modifier
+            .animateContentSize()
+            .padding(end = 5.dp),
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
         Text(
             text = currentText.value,
             style = textStyle,
         )
         Spacer(modifier = Modifier.width(2.dp))
-        if (remainingText.value.isNotEmpty())
-            Text(text = "|", style = textStyle.copy(color = cursorColor))
+        if (isCursorVisible) {
+            val isCursorActive = remainingText.value.isNotEmpty() || isInfiniteCursor
+            if (isBlinkingCursor && isCursorActive)
+                BlinkingCursor(
+                    style = textStyle.copy(color = cursorColor),
+                    typistSpeed = typistSpeed,
+                    cursorSymbol = cursorSymbol
+                )
+            else if (isCursorActive)
+                Text(
+                    text = cursorSymbol,
+                    style = textStyle.copy(color = cursorColor),
+                )
+        }
     }
 
 }

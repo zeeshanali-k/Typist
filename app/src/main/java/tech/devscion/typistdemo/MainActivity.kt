@@ -7,18 +7,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import tech.devscion.typist.Typist
 import tech.devscion.typist.TypistSpeed
@@ -38,15 +34,18 @@ class MainActivity : ComponentActivity() {
                         Typist(
                             text = "Hi! I am Typist.",
                             modifier = Modifier
-                                .align(Alignment.Center)
-                                .animateContentSize(),
+                                .align(Alignment.Center),
                             typistSpeed = TypistSpeed.NORMAL,
                             textStyle = TextStyle(
                                 color = Color.Red,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 28.sp,
                                 textAlign = TextAlign.Center
-                            )
+                            ),
+                            isBlinkingCursor = true,
+                            isInfiniteCursor = false,
+                            isCursorVisible = true,
+                            cursorSymbol = "|",
                         ) {
                             Toast.makeText(
                                 applicationContext, "Typed!",
