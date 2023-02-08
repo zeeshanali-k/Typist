@@ -62,7 +62,6 @@ fun Typist(
             if (isBlinkingCursor && isCursorActive)
                 BlinkingCursor(
                     style = textStyle.copy(color = cursorColor),
-                    typistSpeed = typistSpeed,
                     cursorSymbol = cursorSymbol
                 )
             else if (isCursorActive)

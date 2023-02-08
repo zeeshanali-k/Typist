@@ -10,7 +10,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 internal fun BlinkingCursor(
-    style: TextStyle, typistSpeed: TypistSpeed,
+    style: TextStyle,
     cursorSymbol: String
 ) {
 
@@ -21,7 +21,7 @@ internal fun BlinkingCursor(
     LaunchedEffect(key1 = true) {
         while (true) {
             isVisible.value = isVisible.value.not()
-            delay(typistSpeed.value * 2L)
+            delay(TypistSpeed.NORMAL.value * 2L)
         }
     }
 
