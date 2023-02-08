@@ -1,9 +1,9 @@
-import java.net.URI
+//import java.net.URI
 
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.vanniktech.maven.publish")
+    id("com.vanniktech.maven.publish") version "0.24.0"
 }
 
 val composeVersion = "1.4.0-alpha02"
@@ -55,15 +55,15 @@ dependencies {
 }
 
 
-publishing {
-    repositories {
-        maven {
-            val releasesRepoUrl = "$buildDir/repos/releases"
-            val snapshotsRepoUrl = "$buildDir/repos/snapshots"
-            url = if (version.toString().endsWith("SNAPSHOT")) URI.create(snapshotsRepoUrl) else URI.create(releasesRepoUrl)
-        }
-    }
-}
+//publishing {
+//    repositories {
+//        maven {
+//            val releasesRepoUrl = "$buildDir/repos/releases"
+//            val snapshotsRepoUrl = "$buildDir/repos/snapshots"
+//            url = if (version.toString().endsWith("SNAPSHOT")) URI.create(snapshotsRepoUrl) else URI.create(releasesRepoUrl)
+//        }
+//    }
+//}
 
 
 task("printVersionName") {

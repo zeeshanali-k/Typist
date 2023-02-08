@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -21,6 +20,7 @@ import tech.devscion.typist.TypistSpeed
 import tech.devscion.typistdemo.ui.theme.TypistTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -45,7 +45,6 @@ class MainActivity : ComponentActivity() {
                             isBlinkingCursor = true,
                             isInfiniteCursor = false,
                             isCursorVisible = true,
-                            cursorSymbol = "|",
                         ) {
                             Toast.makeText(
                                 applicationContext, "Typed!",
