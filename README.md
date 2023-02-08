@@ -38,5 +38,7 @@ Typist(
         fontSize = 28.sp,
         textAlign = TextAlign.Center
     )
-)
+){
+//Called On Typing Animation End
+}
 ```
