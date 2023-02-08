@@ -1,5 +1,3 @@
-//import java.net.URI
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -53,17 +51,6 @@ dependencies {
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
 }
-
-
-//publishing {
-//    repositories {
-//        maven {
-//            val releasesRepoUrl = "$buildDir/repos/releases"
-//            val snapshotsRepoUrl = "$buildDir/repos/snapshots"
-//            url = if (version.toString().endsWith("SNAPSHOT")) URI.create(snapshotsRepoUrl) else URI.create(releasesRepoUrl)
-//        }
-//    }
-//}
 
 
 task("printVersionName") {
