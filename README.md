@@ -2,7 +2,7 @@
 
 # Typist
 A Jetpack Compose Text Typing Animation Library.
-For Compose Multiplatform <a hred="https://github.com/zeeshanali-k/Typist-CMP">Check this</>.
+For Compose Multiplatform <a hred="https://github.com/zeeshanali-k/Typist-CMP">Check this</a>.
 
 <img src="/media/typist.gif">
 
