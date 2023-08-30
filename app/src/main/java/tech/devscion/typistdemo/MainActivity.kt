@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import tech.devscion.typist.Typist
 import tech.devscion.typist.TypistSpeed
@@ -28,13 +31,33 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = MaterialTheme.colorScheme.background
                 ) {
-                    Box(contentAlignment = Alignment.Center) {
+                    Column(verticalArrangement = Arrangement.Center,
+                        modifier = Modifier.fillMaxSize()) {
                         Typist(
                             text = "Hi! I am Typist.",
-                            modifier = Modifier
-                                .align(Alignment.Center),
+                            typistSpeed = TypistSpeed.FAST,
+                            textStyle = TextStyle(
+                                color = Color.Red,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 28.sp,
+                                textAlign = TextAlign.Center
+                            ),
+                            isBlinkingCursor = true,
+                            isInfiniteCursor = false,
+                            isCursorVisible = true,
+                            onAnimationEnd = {
+                                Toast.makeText(
+                                    applicationContext, "Typed!",
+                                    Toast.LENGTH_LONG
+                                )
+                                    .show()
+                            }
+                        )
+                        Spacer(modifier = Modifier.height(15.dp))
+                        Typist(
+                            text = "Hi! I am Typist.",
                             typistSpeed = TypistSpeed.NORMAL,
                             textStyle = TextStyle(
                                 color = Color.Red,
@@ -45,13 +68,37 @@ class MainActivity : ComponentActivity() {
                             isBlinkingCursor = true,
                             isInfiniteCursor = false,
                             isCursorVisible = true,
-                        ) {
-                            Toast.makeText(
-                                applicationContext, "Typed!",
-                                Toast.LENGTH_LONG
-                            )
-                                .show()
-                        }
+                            isInfinite = true
+                        )
+                        Spacer(modifier = Modifier.height(15.dp))
+                        Typist(
+                            textList = listOf("Hi! I am Typist.","And I can type multiple times"),
+                            typistSpeed = TypistSpeed.NORMAL,
+                            textStyle = TextStyle(
+                                color = Color.Red,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 28.sp,
+                                textAlign = TextAlign.Center
+                            ),
+                            isInfinite = true,
+                            isBlinkingCursor = false,
+                            isInfiniteCursor = true,
+                            isCursorVisible = true,
+                        )
+                        Spacer(modifier = Modifier.height(15.dp))
+                        Typist(
+                            textList = listOf("Hi! I am Typist.","And I can type multiple times"),
+                            typistSpeed = TypistSpeed.FAST,
+                            textStyle = TextStyle(
+                                color = Color.Red,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 28.sp,
+                                textAlign = TextAlign.Center
+                            ),
+                            isBlinkingCursor = true,
+                            isInfiniteCursor = true,
+                            isCursorVisible = true,
+                        )
                     }
                 }
             }
