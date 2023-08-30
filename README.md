@@ -41,8 +41,31 @@ Typist(
         isBlinkingCursor = true, // if true the cursor will keep blinking
         isInfiniteCursor = false, // if true the cursor will not hide even after the text has been written
         isCursorVisible = true, // if true the cursor will not be visible at all
-    )
-){
-//Called On Typing Animation End
-}
+    ),
+
+    isInfinite = true, // This can make the typing animation repeat infinitely
+    onAnimationStart = {},
+    onAnimationEnd = {}
+)
 ```
+<p>You can now add multiple strings as follows:</p>
+
+```kotlin
+Typist(
+        textList = listOf("Hi! I am Typist.","And I can type multiple times"),//These strings will be typed in the specified order
+        typistSpeed = TypistSpeed.NORMAL,
+        textStyle = TextStyle(
+               color = Color.Red,
+               fontWeight = FontWeight.Bold,
+               fontSize = 28.sp,
+               textAlign = TextAlign.Center
+        ),
+        isInfinite = true, // This can make the typing animation repeat infinitely
+        isBlinkingCursor = false,
+        isInfiniteCursor = true,
+        isCursorVisible = true,
+        onAnimationStart = {},
+        onAnimationEnd = {}
+)
+```
+
